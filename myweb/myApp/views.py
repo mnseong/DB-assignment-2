@@ -4,10 +4,9 @@ from django.db import connection
 from django.urls import reverse
 
 # Create your views here.
-def display_products(request):
-    outputProducts = []
+def display(request):
 
-    return render(request, 'myApp/index.html', {"products": outputProducts})
+    return render(request, 'myApp/index.html')
 
 
 # Create Table
@@ -24,7 +23,7 @@ def create_table(request):
         connection.commit()
         connection.close()
 
-    return HttpResponseRedirect(reverse('display_products'))
+    return HttpResponseRedirect(reverse('display'))
 
 
 # Insert Data
@@ -106,7 +105,7 @@ def insert_data(request):
         connection.commit()
         connection.close()
 
-    return HttpResponseRedirect(reverse('display_products'))
+    return HttpResponseRedirect(reverse('display'))
 
 
 def first_query(request):
