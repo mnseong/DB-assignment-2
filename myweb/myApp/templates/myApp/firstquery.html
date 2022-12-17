@@ -12,9 +12,11 @@
                 <th>AVG</th>
             </tr>
         </thead>
+        {% for r in output %}
         <tr>
-            <td>{{ avg_hd }}</td>
+            <td>{{ r.average_size }}</td>
         </tr>
+        {% endfor %}
     </table>
 </body>
 </html>
