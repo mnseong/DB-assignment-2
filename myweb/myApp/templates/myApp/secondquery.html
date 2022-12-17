@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Database Assignment 2</title>
+</head>
+<body>
+    <h2>Second Query - Find the average speed of laptop for each maker</h2>
+    <table class="table table-dark table-striped" style="width: 30%">
+        <thead>
+            <tr>
+                <th>MAKER</th>
+                <th>AVG SPEED</th>
+            </tr>
+        </thead>
+        {% for r in output %}
+        <tr>
+            <td>{{ r.maker }}</td>
+            <td>{{ r.average_speed }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
