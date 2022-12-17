@@ -138,6 +138,7 @@ def second_query(request):
 
 def third_query(request):
     with connection.cursor() as cursor:
+        output = []
         query = """SELECT t1.maker, t1.price
                             FROM
                             (SELECT maker, price FROM Product,Laptop
@@ -146,11 +147,15 @@ def third_query(request):
                             WHERE type = 'laptop' GROUP BY maker HAVING COUNT(maker) = 1) AS t2
                             WHERE t1.maker = t2.maker"""
         cursor.execute(query)
-        laptop_price = cursor.fetchall()
+        fetch_result = cursor.fetchall()
         connection.close()
-        print(laptop_price)
+        print(fetch_result)
 
-    return render(request, 'myApp/index.html', {"laptop_price": laptop_price})
+        for tmp in fetch_result:
+            each_row = {'maker': tmp[0], 'price': tmp[1]}
+            output.append(each_row)
+
+    return render(request, 'myApp/thirdquery.html', {"output": output})
 
 
 def fourth_query(request):
