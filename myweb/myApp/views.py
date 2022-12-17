@@ -122,13 +122,18 @@ def first_query(request):
 
 def second_query(request):
     with connection.cursor() as cursor:
-        query = "SELECT maker,AVG(speed) FROM Product,PC WHERE Product.model = PC.model GROUP BY maker"
+        output = []
+        query = "SELECT maker,AVG(speed) AS average_speed FROM Product,PC WHERE Product.model = PC.model GROUP BY maker"
         cursor.execute(query)
-        avg_speed = cursor.fetchall()
+        fetch_result = cursor.fetchall()
         connection.close()
-        print(avg_speed)
+        print(fetch_result)
 
-    return render(request, 'myApp/index.html', {"avg_speed": avg_speed})
+        for tmp in fetch_result:
+            each_row = {'maker': tmp[0], 'average_speed': tmp[1]}
+            output.append(each_row)
+
+    return render(request, 'myApp/secondquery.html', {"output": output})
 
 
 def third_query(request):
