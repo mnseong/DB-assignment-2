@@ -117,7 +117,7 @@ def first_query(request):
         connection.close()
         print(avg_hd)
 
-    return render(request, 'myApp/index.html',{"avg_hd": avg_hd})
+    return render(request, 'myApp/firstquery.html', {"avg_hd": avg_hd})
 
 
 def second_query(request):
@@ -128,7 +128,7 @@ def second_query(request):
         connection.close()
         print(avg_speed)
 
-    return render(request, 'myApp/index.html',{"avg_speed": avg_speed})
+    return render(request, 'myApp/index.html', {"avg_speed": avg_speed})
 
 
 def third_query(request):
@@ -145,7 +145,7 @@ def third_query(request):
         connection.close()
         print(laptop_price)
 
-    return render(request, 'myApp/index.html',{"laptop_price": laptop_price})
+    return render(request, 'myApp/index.html', {"laptop_price": laptop_price})
 
 
 def fourth_query(request):
@@ -162,4 +162,4 @@ def fourth_query(request):
         connection.close()
         print(printer_info)
 
-    return render(request, 'myApp/index.html',{"printer_info": printer_info})
+    return render(request, 'myApp/index.html', {"printer_info": printer_info})
