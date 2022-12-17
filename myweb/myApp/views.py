@@ -111,13 +111,18 @@ def insert_data(request):
 
 def first_query(request):
     with connection.cursor() as cursor:
-        query = "SELECT AVG(hd) FROM PC"
+        output = []
+        query = "SELECT AVG(hd) AS average_size FROM PC"
         cursor.execute(query)
-        avg_hd = cursor.fetchall()
+        fetch_result = cursor.fetchall()
         connection.close()
-        print(avg_hd)
+        print(fetch_result)
 
-    return render(request, 'myApp/firstquery.html', {"avg_hd": avg_hd})
+        for tmp in fetch_result:
+            each_row = {'average_size': tmp[0]}
+            output.append(each_row)
+
+    return render(request, 'myApp/firstquery.html', {"output": output})
 
 
 def second_query(request):
@@ -160,6 +165,7 @@ def third_query(request):
 
 def fourth_query(request):
     with connection.cursor() as cursor:
+        output = []
         query = """SELECT p1.maker,p2.model,p1.price
                             FROM
                             (SELECT p1.maker,MAX(p2.price) AS price
@@ -168,8 +174,12 @@ def fourth_query(request):
                             GROUP BY p1.maker) AS p1,Printer p2
                             WHERE p1.price = p2.price"""
         cursor.execute(query)
-        printer_info = cursor.fetchall()
+        fetch_result = cursor.fetchall()
         connection.close()
-        print(printer_info)
+        print(fetch_result)
 
-    return render(request, 'myApp/index.html', {"printer_info": printer_info})
+        for tmp in fetch_result:
+            each_row = {'maker': tmp[0], 'model': tmp[1], 'price': tmp[2]}
+            output.append(each_row)
+
+    return render(request, 'myApp/fourthquery.html', {"output": output})
