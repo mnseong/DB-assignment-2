@@ -17,5 +17,85 @@
         <button type="button" onclick="location.href='third_query/'">third_query</button>
         <button type="button" onclick="location.href='fourth_query/'">fourth_query</button>
     </div>
+    <br>
+    <br>
+    {% if flag == 0 %}
+        <table class="table table-dark table-striped" style="width: 30%">
+            <thead>
+                <tr>
+                    <th>MAKER</th>
+                    <th>MODEL</th>
+                    <th>TYPE</th>
+                </tr>
+            </thead>
+            {% for r in product_output %}
+            <tr>
+                <td>{{ r.maker }}</td>
+                <td>{{ r.model }}</td>
+                <td>{{ r.type }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <table class="table table-dark table-striped" style="width: 30%">
+            <thead>
+                <tr>
+                    <th>MODEL</th>
+                    <th>SPEED</th>
+                    <th>RAM</th>
+                    <th>HD</th>
+                    <th>PRICE</th>
+                </tr>
+            </thead>
+            {% for r in pc_output %}
+            <tr>
+                <td>{{ r.model }}</td>
+                <td>{{ r.speed }}</td>
+                <td>{{ r.ram }}</td>
+                <td>{{ r.hd }}</td>
+                <td>{{ r.price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <table class="table table-dark table-striped" style="width: 30%">
+            <thead>
+                <tr>
+                    <th>MODEL</th>
+                    <th>SPEED</th>
+                    <th>RAM</th>
+                    <th>HD</th>
+                    <th>SCREEN</th>
+                    <th>PRICE</th>
+                </tr>
+            </thead>
+            {% for r in laptop_output %}
+            <tr>
+                <td>{{ r.model }}</td>
+                <td>{{ r.speed }}</td>
+                <td>{{ r.ram }}</td>
+                <td>{{ r.hd }}</td>
+                <td>{{ r.screen }}</td>
+                <td>{{ r.price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <table class="table table-dark table-striped" style="width: 30%">
+            <thead>
+                <tr>
+                    <th>MODEL</th>
+                    <th>COLOR</th>
+                    <th>TYPE</th>
+                    <th>PRICE</th>
+                </tr>
+            </thead>
+            {% for r in printer_output %}
+            <tr>
+                <td>{{ r.model }}</td>
+                <td>{{ r.color }}</td>
+                <td>{{ r.type }}</td>
+                <td>{{ r.price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
 </body>
 </html>

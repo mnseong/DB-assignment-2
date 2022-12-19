@@ -3,10 +3,76 @@ from django.shortcuts import render
 from django.db import connection
 from django.urls import reverse
 
+
 # Create your views here.
 def display(request):
+    flag = 0
+    with connection.cursor() as cursor1:
+        product_output = []
+        try:
+            view_product = "SELECT * FROM Product"
+            cursor1.execute(view_product)
+            product_result = cursor1.fetchall()
+            connection.close()
+            print(product_result)
 
-    return render(request, 'myApp/index.html')
+            for tmp in product_result:
+                each_row = {'maker': tmp[0], 'model': tmp[1], 'type': tmp[2]}
+                product_output.append(each_row)
+        except:
+            flag = 1
+            print("table is not exist")
+
+    with connection.cursor() as cursor2:
+        pc_output = []
+        try:
+            view_pc = "SELECT * FROM PC"
+            cursor2.execute(view_pc)
+            pc_result = cursor2.fetchall()
+            connection.close()
+            print(pc_result)
+
+            for tmp in pc_result:
+                each_row = {'model': tmp[0], 'speed': tmp[1], 'ram': tmp[2], 'hd': tmp[3], 'price': tmp[4]}
+                pc_output.append(each_row)
+        except:
+            flag = 1
+            print("table is not exist")
+
+    with connection.cursor() as cursor3:
+        laptop_output = []
+        try:
+            view_laptop = "SELECT * FROM Laptop"
+            cursor3.execute(view_laptop)
+            laptop_result = cursor3.fetchall()
+            connection.close()
+            print(laptop_result)
+
+            for tmp in laptop_result:
+                each_row = {'model': tmp[0], 'speed': tmp[1], 'ram': tmp[2], 'hd': tmp[3], 'screen': tmp[4], 'price': tmp[5]}
+                laptop_output.append(each_row)
+        except:
+            flag = 1
+            print("table is not exist")
+
+    with connection.cursor() as cursor4:
+        printer_output = []
+        try:
+            view_printer = "SELECT * FROM Printer"
+            cursor4.execute(view_printer)
+            printer_result = cursor4.fetchall()
+            connection.close()
+            print(printer_result)
+
+            for tmp in printer_result:
+                each_row = {'model': tmp[0], 'color': tmp[1], 'type': tmp[2], 'price': tmp[3]}
+                printer_output.append(each_row)
+        except:
+            flag = 1
+            print("table is not exist")
+
+
+    return render(request, 'myApp/index.html', {"product_output": product_output, "pc_output": pc_output, "laptop_output": laptop_output, "printer_output": printer_output, "flag": flag})
 
 
 # Create Table
@@ -21,9 +87,32 @@ def create_table(request):
         cursor.execute(create_laptop_query)
         cursor.execute(create_printer_query)
         connection.commit()
+
+        result = cursor.fetchall()
         connection.close()
 
+        # product_output = []
+        # pc_output = []
+        # laptop_output = []
+        # printer_output = []
+        #
+        # view_product = "SELECT * FROM Product"
+        # view_pc = "SELECT * FROM PC"
+        # view_laptop = "SELECT * FROM Laptop"
+        # view_printer = "SELECT * FROM Printer"
+        #
+        # cursor.execute(view_product)
+        # cursor.execute(view_pc)
+        # cursor.execute(view_laptop)
+        # cursor.execute(view_printer)
+
+        # connection.commit()
+        # connection.close()
+        print(result)
+
+
     return HttpResponseRedirect(reverse('display'))
+    # return render(request, 'myApp/createtable.html', )
 
 
 # Insert Data
