@@ -5,23 +5,28 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Database Assignment 2</title>
 </head>
-<body>
-    <h2>Database Assignment 2</h2>
-    <button type="button" onclick="location.href='create_table/'">CreateTable</button>
-    <button type="button" onclick="location.href='insert_data/'">InsertData</button>
+<body style="background-color:#FDF5E6">
+    <h1 class="text-center">Database Assignment 2 - Prof.Li</h1>
     <br>
     <br>
-    <div>
-        <button type="button" onclick="location.href='first_query/'">first_query</button>
-        <button type="button" onclick="location.href='second_query/'">second_query</button>
-        <button type="button" onclick="location.href='third_query/'">third_query</button>
-        <button type="button" onclick="location.href='fourth_query/'">fourth_query</button>
+    <h2 class="text-center">Query Menu</h2>
+    <div class="d-flex justify-content-center">
+    <div class="btn-group me-2" role="group" aria-label="Second group">
+        <button type="button" class="btn btn-secondary" onclick="location.href='create_table/'">Create Table</button>
+        <button type="button" class="btn btn-secondary" onclick="location.href='insert_data/'">Insert Data</button>
+        <button type="button" class="btn btn-secondary" onclick="location.href='first_query/'">First Query</button>
+        <button type="button" class="btn btn-secondary" onclick="location.href='second_query/'">Second Query</button>
+        <button type="button" class="btn btn-secondary" onclick="location.href='third_query/'">Third Query</button>
+        <button type="button" class="btn btn-secondary" onclick="location.href='fourth_query/'">Fourth Query</button>
+    </div>
     </div>
     <br>
     <br>
     {% if flag == 0 %}
-        <table class="table table-dark table-striped" style="width: 30%">
-            <thead>
+    <div class="d-flex justify-content-around">
+        <table class="table" style="width: 30px; height: 10px;">
+            <caption>Records of Products</caption>
+            <thead class="table-dark">
                 <tr>
                     <th>MAKER</th>
                     <th>MODEL</th>
@@ -36,8 +41,9 @@
             </tr>
             {% endfor %}
         </table>
-        <table class="table table-dark table-striped" style="width: 30%">
-            <thead>
+        <table class="table" style="width: 30px; height: 10px;">
+            <caption>Records of PC</caption>
+            <thead class="table-dark">
                 <tr>
                     <th>MODEL</th>
                     <th>SPEED</th>
@@ -56,8 +62,9 @@
             </tr>
             {% endfor %}
         </table>
-        <table class="table table-dark table-striped" style="width: 30%">
-            <thead>
+        <table class="table" style="width: 30px; height: 10px;">
+            <caption>Records of Laptop</caption>
+            <thead class="table-dark">
                 <tr>
                     <th>MODEL</th>
                     <th>SPEED</th>
@@ -78,8 +85,9 @@
             </tr>
             {% endfor %}
         </table>
-        <table class="table table-dark table-striped" style="width: 30%">
-            <thead>
+        <table class="table" style="width: 30px; height: 10px;">
+            <caption>Records of Printer</caption>
+            <thead class="table-dark">
                 <tr>
                     <th>MODEL</th>
                     <th>COLOR</th>
@@ -96,6 +104,7 @@
             </tr>
             {% endfor %}
         </table>
+    </div>
     {% endif %}
 </body>
 </html>

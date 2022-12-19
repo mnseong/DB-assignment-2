@@ -5,23 +5,28 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Database Assignment 2</title>
 </head>
-<body>
-    <h2>Third Query - Find the price of laptop, which is the only laptop model of the maker</h2>
+<body style="background-color:#FDF5E6">
     <br>
-    <h3>Result of query</h3>
-    <table class="table table-dark table-striped" style="width: 30%">
-        <thead>
+    <h2 class="text-center">Third Query - Find the price of laptop, which is the only laptop model of the maker</h2>
+    <br>
+    <br>
+    <h3 class="text-center">Result of query</h3>
+    <br>
+    <div class="d-flex justify-content-center">
+        <table class="table" style="width: 15%">
+            <thead class="table-dark">
+                <tr>
+                    <th>MAKER</th>
+                    <th>PRICE</th>
+                </tr>
+            </thead>
+            {% for r in output %}
             <tr>
-                <th>MAKER</th>
-                <th>PRICE</th>
+                <td>{{ r.maker }}</td>
+                <td>{{ r.price }}</td>
             </tr>
-        </thead>
-        {% for r in output %}
-        <tr>
-            <td>{{ r.maker }}</td>
-            <td>{{ r.price }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+            {% endfor %}
+        </table>
+    </div>
 </body>
 </html>
