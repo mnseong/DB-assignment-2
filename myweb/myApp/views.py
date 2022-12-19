@@ -91,28 +91,10 @@ def create_table(request):
         result = cursor.fetchall()
         connection.close()
 
-        # product_output = []
-        # pc_output = []
-        # laptop_output = []
-        # printer_output = []
-        #
-        # view_product = "SELECT * FROM Product"
-        # view_pc = "SELECT * FROM PC"
-        # view_laptop = "SELECT * FROM Laptop"
-        # view_printer = "SELECT * FROM Printer"
-        #
-        # cursor.execute(view_product)
-        # cursor.execute(view_pc)
-        # cursor.execute(view_laptop)
-        # cursor.execute(view_printer)
-
-        # connection.commit()
-        # connection.close()
         print(result)
 
 
     return HttpResponseRedirect(reverse('display'))
-    # return render(request, 'myApp/createtable.html', )
 
 
 # Insert Data
